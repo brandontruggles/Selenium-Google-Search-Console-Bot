@@ -1,0 +1,30 @@
+{
+  "name": "selenium-google-search-console-bot",
+  "version": "1.0.0",
+  "description": "A Python bot for scraping data rom Google's Search Console which is not available through their API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "Selenium",
+    "Search",
+    "Console",
+    "API",
+    "Bot",
+    "Google"
+  ],
+  "author": "Brandon Ruggles",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "phantomjs-prebuilt": "^2.1.14"
+  }
+}

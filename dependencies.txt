@@ -1,0 +1,13 @@
+appdirs==1.4.3
+chromedriver-installer==0.0.4
+google-api-python-client==1.6.2
+httplib2==0.10.3
+oauth2client==4.0.0
+packaging==16.8
+pyasn1==0.2.3
+pyasn1-modules==0.0.8
+pyparsing==2.2.0
+rsa==3.4.2
+selenium==3.0.2
+six==1.10.0
+uritemplate==3.0.0
