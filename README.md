@@ -27,7 +27,7 @@ This is a simple Python bot which uses Selenium to scrape the Google Search Cons
 
 * `indexNum` - The total number of pages indexed.
 
-8. You may edit `autocheckout.py` to use PhantomJS instead of Chromedriver if you do not wish to view the browser navigation performed by the script.
+8. You may edit `scrapedata.py` to use PhantomJS instead of Chromedriver if you do not wish to view the browser navigation performed by the script.
 
 9. In order to access the Google Sheets API with this script, you must follow the insructions for creating an API project and downloading a `client_secret.json` file to the root project directory. These instructions are available here: [https://developers.google.com/api-client-library/python/auth/installed-app#creatingcred](https://developers.google.com/api-client-library/python/auth/installed-app#creatingcred). 
 
