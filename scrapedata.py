@@ -77,9 +77,8 @@ def login(username, password, cookieData):
 
 		usernameBox.send_keys(username)
 		usernameBox.send_keys(Keys.ENTER)
-		boxDiv = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH,'/html/body/div/div[2]/div[2]/div[1]/form/div[2]/div/div[2]/div/div')))
+		boxDiv = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div/div[2]/div[2]/div[1]/form/div[2]/div/div[2]/div/div')))
 		passwordBox = boxDiv.find_element_by_xpath('./input[@id="Passwd"]')
-
 		passwordBox.send_keys(password)
 		passwordBox.send_keys(Keys.ENTER)
 	
@@ -92,7 +91,7 @@ def scrape():
 			siteLink = link
 			break
 	siteLink.click()
-	soft404Div = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wmx_gwt_feature_DASHBOARD"]/div/div[5]/div[1]/div/table/tbody/tr[1]/td/div/div/div[2]/div[2]/table/tbody/tr/td[2]/div/div[1]')))
+	soft404Div = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="wmx_gwt_feature_DASHBOARD"]/div/div[5]/div[1]/div/table/tbody/tr[1]/td/div/div/div[2]/div[2]/table/tbody/tr/td[2]/div/div[1]')))
 	notFoundDiv = driver.find_element_by_xpath('//*[@id="wmx_gwt_feature_DASHBOARD"]/div/div[5]/div[1]/div/table/tbody/tr[1]/td/div/div/div[2]/div[2]/table/tbody/tr/td[2]/div/div[2]')
 	otherDiv = driver.find_element_by_xpath('//*[@id="wmx_gwt_feature_DASHBOARD"]/div/div[5]/div[1]/div/table/tbody/tr[1]/td/div/div/div[2]/div[2]/table/tbody/tr/td[1]/div/div[3]')
 	soft404Num = long(soft404Div.find_element_by_xpath('./b').get_attribute('innerHTML').replace(",", ""))
@@ -105,9 +104,9 @@ def scrape():
 	date = year + "|" + month
 	indexDiv = driver.find_element_by_xpath('//*[@id="navigation"]/li[5]/div')
 	indexDiv.click()
-	indexStatusButton = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="navigation"]/li[5]/ul/li[1]/a')))
+	indexStatusButton = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="navigation"]/li[5]/ul/li[1]/a')))
 	indexStatusButton.click()
-	indexDiv = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="index-status-chart-legend"]/div/table/tbody/tr[2]/td/div')))
+	indexDiv = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="index-status-chart-legend"]/div/table/tbody/tr[2]/td/div')))
 	indexNum = long(indexDiv.get_attribute('innerHTML').replace(",", ""))
 
 	#Change the order of these values to change the order that they are pasted into the spreadsheet
@@ -173,8 +172,9 @@ def writeToCSV(outputArr):
 
 startTime = time.time()
 
-driver = webdriver.Chrome() #Non-headless webdriver
-#driver = webdriver.PhantomJS() #Headless webdriver
+#driver = webdriver.Chrome() #Non-headless webdriver
+driver = webdriver.PhantomJS() #Headless webdriver
+
 try:
 	login(username, password, cookieData)
 	if(not flags.refresh):
