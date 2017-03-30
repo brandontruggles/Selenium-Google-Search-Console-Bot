@@ -7,5 +7,6 @@ node_modules/
 ghostdriver.log
 servers.txt
 cookies.dat
+~scrape.conf
 client_secret.json
 credentials.json

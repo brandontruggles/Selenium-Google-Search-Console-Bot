@@ -40,7 +40,7 @@ debug = True
 
 try:
 	#We read our JSON data from a file called 'scrape.conf' for simplicity and readability.
-	confFile = open("scrape.conf")
+	confFile = open(os.path.join(os.path.dirname(__file__), "scrape.conf"))
 	confJSON = json.loads(confFile.read())
 	site = confJSON["site"]
 	spreadsheetId = confJSON["spreadsheetId"]
@@ -54,7 +54,7 @@ except Exception as e:
 		print "Error Details: " + str(e)
 try:
 	#We read our cookies from a file called 'cookies.dat' (used for storing Google login credentials securely.
-	cookieFile = open("cookies.dat")
+	cookieFile = open(os.path.join(os.path.dirname(__file__), "cookies.dat"))
 	cookieData = pickle.loads(cookieFile.read())
 except Exception as e:
 	print "Error: either no cookies.dat was found, or the data it contains could not be read!"
@@ -130,8 +130,8 @@ def getDictForItem(item):
 def getAPICredentials():
 	print "Attempting to retrieve API credentials..."
 	SCOPES = "https://www.googleapis.com/auth/spreadsheets"
-	CLIENT_SECRET_FILE = "client_secret.json"	
-	CREDENTIAL_FILE = "credentials.json"
+	CLIENT_SECRET_FILE = os.path.join(os.path.dirname(__file__), "client_secret.json")
+	CREDENTIAL_FILE = os.path.join(os.path.dirname(__file__), "credentials.json")
 	APPLICATION_NAME = "Selenium Google Search Console Bot"	
 	store = Storage(CREDENTIAL_FILE)
 	credentials = store.get()
@@ -183,7 +183,7 @@ try:
 		getAPICredentials()
 	print "Writing cookie data to 'cookies.dat'..." 
 	dump = pickle.dumps(driver.get_cookies())
-	cookieFile = open("cookies.dat", "w")
+	cookieFile = open(os.path.join(os.path.dirname(__file__), "cookies.dat"), "w")
 	cookieFile.write(dump)
 	cookieFile.close()
 	print "Successfully wrote cookies to 'cookies.dat'!"
