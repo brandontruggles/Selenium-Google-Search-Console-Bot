@@ -97,8 +97,9 @@ def scrape():
 	soft404Num = long(soft404Div.find_element_by_xpath('./b').get_attribute('innerHTML').replace(",", ""))
 	notFoundNum = long(notFoundDiv.find_element_by_xpath('./b').get_attribute('innerHTML').replace(",", ""))
 	otherNum = long(otherDiv.find_element_by_xpath('./b').get_attribute('innerHTML').replace(",", ""))
-	month = str(datetime.date.today().month)
-	year = str(datetime.date.today().year)
+	yesterday = datetime.date.today() + datetime.timedelta(days=-1)
+	month = str(yesterday.month)
+	year = str(yesterday.year)
 	if(int(month) < 10):
 		month = "0" + month
 	date = year + "|" + month
